@@ -22,8 +22,9 @@ test('Test a value is integer', () => {
 test('Given a string test that return is in lower case', () => {
   expect(toLowerCase('hello')).toBe('hello');
   expect(toLowerCase('BonjouR')).toBe('bonjour');
-  expect(jest.fn()).not.toHaveBeenCalledWith(null);
-  expect(jest.fn()).not.toHaveBeenCalledWith(undefined);
+  expect(toLowerCase('')).toBe('Please provide a string');
+  expect(toLowerCase(null)).toBe('Please provide a string');
+  expect(toLowerCase(undefined)).toBe('Please provide a string');
 });
 
 test('remove duplicates of array', () => {
@@ -44,7 +45,7 @@ test('remove duplicates of array', () => {
   }).toThrowError('please provide an array of numbers or strings');
 
   expect(removeDuplicatesFromArray([])).toEqual([]);
-
+  expect(removeDuplicatesFromArray([3])).toEqual([3]);
   expect(removeDuplicatesFromArray(validArrayStrings)).toEqual(removeDuplicates(validArrayStrings));
   expect(removeDuplicatesFromArray(validArrayInts)).toEqual(removeDuplicates(validArrayInts));
 })
